@@ -7,11 +7,30 @@ body {
   background-color: red;
   flex-direction: row;
   position: relative;
-  min-height: 500px;
+  min-height: 700px;
 }
 
-.playersBackground {
-    background-image: url('https://footballnews92.files.wordpress.com/2013/10/chelsea-cl-2012.jpg')
+
+.playersBackgroundImage {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  display: none;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+.playersBackgroundImage.activeBackground {
+  z-index: 2;
+  display: block;
+}
+
+.playersBackgroundImage.previousImage {
+  z-index: 1;
+  display: block;
 }
 
 .playerInfo {

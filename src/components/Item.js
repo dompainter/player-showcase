@@ -4,7 +4,7 @@ import Heading from './Heading'
 import classNames from 'classnames'
 
 const Item = ({ player, handleClick }) => {
-  const { heading, info, content, img, active } = player
+  const { heading, info, content, active } = player
 
   return (
     <div
@@ -12,8 +12,7 @@ const Item = ({ player, handleClick }) => {
       'playerItem',
       { 'activePlayer' : active }
      )}
-      style={{ backgroundImage: `url(${img})` }}
-      onClick={e => handleClick(heading)}>
+      onClick={handleClick}>
       <div className="playerDetails">
         <Info>{info}</Info>
         <Heading>{heading}</Heading>

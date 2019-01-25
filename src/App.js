@@ -2,17 +2,21 @@ import React, { Component, Fragment } from 'react';
 import './App.css';
 import getPlayers from './players'
 import Item from './components/Item'
+import classNames from 'classnames'
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      players: getPlayers()
+      players: getPlayers(),
+      defaultBackgroundActive: true,
+      previousActiveIndex: 0,
+      currentActiveIndex: 0
     }
     this.handleClick = this.handleClick.bind(this)
   }
 
-  handleClick(name) {
+  handleClick(index, name) {
     const updatedPlayers = this.state.players.map(p => {
       if (p.active) {
         p.active = false
@@ -21,24 +25,48 @@ class App extends Component {
       }
       return p
     })
+    
+    const previousIndex = this.state.currentActiveIndex
+
+    if (index === previousIndex) index = 0
+    console.log('​App -> handleClick -> index', index)
+		console.log('​App -> handleClick -> previousIndex', previousIndex)
+
     this.setState({
-      players: updatedPlayers
+      players: updatedPlayers,
+      currentActiveIndex: index,
+      previousActiveIndex: previousIndex
     })
   }
 
   render() {
-    console.log(this.state.players)
     return (
       <Fragment>
         <div className="playerTitle">
           Chelsea Players 2019
         </div>
         <div className="playerContainer">
-          {this.state.players.map((player, i) => (
-            <Item player={player} handleClick={this.handleClick} />
-          ))}
+          {this.state.players.map((player, i) => {
+            const playerIndex = i + 1
+            return (
+              <Item key={i} player={player} handleClick={() => this.handleClick(playerIndex, player.heading)} />
+            )
+          })}
+          <div className="playersBackgrounds">
+            {this.state.players.map((player, i) => {
+              const index = i + 1
+              return (
+                <div key={i}
+                  className={classNames("playerBackgroundImage", { activeBackground: index === this.state.currentActiveIndex })}
+                  style={{ backgroundImage: `url(${player.img})`}}
+                />
+              )
+            })}
+            <div className={classNames("playerBackgroundImage", { activeBackground: this.state.currentActiveIndex === 0 })}
+                style={{ backgroundImage: `url('https://footballnews92.files.wordpress.com/2013/10/chelsea-cl-2012.jpg')`}}
+              />
+          </div>
         </div>
-        <Fragment className="playersBackground" />
       </Fragment>
     )
   }
