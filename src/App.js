@@ -27,10 +27,7 @@ class App extends Component {
     })
     
     const previousIndex = this.state.currentActiveIndex
-
     if (index === previousIndex) index = 0
-    console.log('​App -> handleClick -> index', index)
-		console.log('​App -> handleClick -> previousIndex', previousIndex)
 
     this.setState({
       players: updatedPlayers,
@@ -57,12 +54,18 @@ class App extends Component {
               const index = i + 1
               return (
                 <div key={i}
-                  className={classNames("playerBackgroundImage", { activeBackground: index === this.state.currentActiveIndex })}
+                  className={classNames("playerBackgroundImage",
+                    { activeBackground: index === this.state.currentActiveIndex },
+                    { previousBackground: index === this.state.previousActiveIndex }
+                  )}
                   style={{ backgroundImage: `url(${player.img})`}}
                 />
               )
             })}
-            <div className={classNames("playerBackgroundImage", { activeBackground: this.state.currentActiveIndex === 0 })}
+            <div className={classNames("playerBackgroundImage",
+              { activeBackground: this.state.currentActiveIndex === 0 },
+              { previousBackground: this.state.previousActiveIndex === 0 }
+            )}
                 style={{ backgroundImage: `url('https://footballnews92.files.wordpress.com/2013/10/chelsea-cl-2012.jpg')`}}
               />
           </div>
