@@ -1,27 +1,46 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { Component, Fragment } from 'react';
 import './App.css';
+import getPlayers from './players'
+import Item from './components/Item'
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      players: getPlayers()
+    }
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  handleClick(name) {
+    const updatedPlayers = this.state.players.map(p => {
+      if (p.active) {
+        p.active = false
+      } else if (p.heading === name) {
+        p.active = true
+      }
+      return p
+    })
+    this.setState({
+      players: updatedPlayers
+    })
+  }
+
   render() {
+    console.log(this.state.players)
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+      <Fragment>
+        <div className="playerTitle">
+          Chelsea Players 2019
+        </div>
+        <div className="playerContainer">
+          {this.state.players.map((player, i) => (
+            <Item player={player} handleClick={this.handleClick} />
+          ))}
+        </div>
+        <Fragment className="playersBackground" />
+      </Fragment>
+    )
   }
 }
 

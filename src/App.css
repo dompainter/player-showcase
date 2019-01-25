@@ -1,32 +1,72 @@
-.App {
-  text-align: center;
+body {
+  font-family: sans-serif;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.playerContainer {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background-color: red;
+  flex-direction: row;
+  position: relative;
+  min-height: 500px;
+}
+
+.playersBackground {
+    background-image: url('https://footballnews92.files.wordpress.com/2013/10/chelsea-cl-2012.jpg')
+}
+
+.playerInfo {
+  background-color: blue;
+  color: white;
+  font-weight: bold;
+  font-size: 0.9em;
+  padding: 3px;
+  text-transform: uppercase;
+}
+
+.playerContent {
+  color: white;
+  animation-duration: 0.5s;
+  animation-name: fadeInUp;
+}
+
+.playerActive.playerContent {
+  opacity: 1;
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translate3d(0, 40px, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+} 
+
+h2 {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.playerItem.activePlayer {
+  flex:  2;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.playerDetails {
+  margin-top: 130px;
+  text-align: center;
+}
+
+.playerItem {
+  max-height: 100%;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  padding: 0;
+  flex-wrap: wrap;
+  background-size: cover;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1;
+  background-position: center;
+  transition: all 0.5s ease;
 }
