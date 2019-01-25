@@ -4,12 +4,35 @@ body {
 
 .playerContainer {
   display: flex;
-  background-color: red;
   flex-direction: row;
   position: relative;
   min-height: 700px;
 }
 
+.playerBackgrounds {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+
+.playerItemLink {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  -webkit-tap-highlight-color: transparent;
+  background: 0px center;
+  border-width: 0px;
+  border-style: initial;
+  border-color: initial;
+  border-image: initial;
+}
 
 .playersBackgroundImage {
   position: absolute;
@@ -23,12 +46,12 @@ body {
   background-position: 50% 50%;
 }
 
-.playersBackgroundImage.activeBackground {
+.playerBackgroundImage.activeBackground {
   z-index: 2;
   display: block;
 }
 
-.playersBackgroundImage.previousImage {
+.playerBackgroundImage.previousBackground {
   z-index: 1;
   display: block;
 }

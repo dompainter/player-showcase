@@ -49,7 +49,7 @@ class App extends Component {
               <Item key={i} player={player} handleClick={() => this.handleClick(playerIndex, player.heading)} />
             )
           })}
-          <div className="playersBackgrounds">
+          <div className="playerBackgrounds">
             {this.state.players.map((player, i) => {
               const index = i + 1
               return (

@@ -11,8 +11,8 @@ const Item = ({ player, handleClick }) => {
       className={ classNames(
       'playerItem',
       { 'activePlayer' : active }
-     )}
-      onClick={handleClick}>
+     )}>
+      <button className="playerItemLink" onClick={handleClick} />
       <div className="playerDetails">
         <Info>{info}</Info>
         <Heading>{heading}</Heading>
