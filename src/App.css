@@ -1,5 +1,9 @@
 body {
-  font-family: sans-serif;
+  font-family: 'Poppins', sans-serif;
+}
+
+*:focus {
+  outline: none;
 }
 
 .playerContainer {
@@ -7,6 +11,7 @@ body {
   flex-direction: row;
   position: relative;
   min-height: 700px;
+  overflow: hidden;
 }
 
 .playerBackgrounds {
@@ -15,6 +20,16 @@ body {
   right: 0px;
   bottom: 0px;
   left: 0px;
+}
+.playerBackgrounds:after {
+  content: '\A';
+  position: absolute;
+  width: 100%;
+  height:100%;
+  top:0;
+  left:0;
+  background:rgba(0,0,0,0.6);
+  opacity: 1;
 }
 
 .playerItemLink {
@@ -50,7 +65,7 @@ body {
   height: 100%;
   background-size: cover;
   animation: fadeIn ease-in 1;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   opacity: 1;
 }
 
@@ -60,27 +75,48 @@ body {
 }
 
 .playerInfo {
-  background-color: blue;
+  background-color: #034694;
   color: white;
   font-weight: bold;
   font-size: 0.9em;
   padding: 3px;
   text-transform: uppercase;
+  width: 150px;
+  margin: auto;
 }
 
 .playerContent {
-  color: white;
+  color: #FFF;
   animation-duration: 0.5s;
   animation-name: fadeInUp;
+  animation-delay: 0.8s;
+  padding-left: 50px;
+  padding-right: 50px;
+  opacity: 0;
+  animation-fill-mode: forwards;
 }
 
-.playerActive.playerContent {
-  opacity: 1;
+.playerStats {
+  font-family: 'Roboto Slab', serif;
+  font-size: 1.2em;
+  color: #FFF;
+  animation-duration: 0.5s;
+  animation-name: fadeInUp;
+  animation-delay: 0.8s;
+  opacity: 0;
+  animation-fill-mode: forwards;
 }
+
+.playerStats span {
+  line-height: 25px;;
+  display: block;
+}
+
 
 @keyframes fadeInUp {
   from {
-    transform: translate3d(0, 40px, 0);
+    transform: translate3d(0, 20px, 0);
+    opacity: 0;
   }
   to {
     transform: translate3d(0, 0, 0);
@@ -88,8 +124,17 @@ body {
   }
 } 
 
-h2 {
-  color: white;
+.playerHeadings {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.heading {
+  font-family: 'Roboto Slab', serif;
+  color: #FFF;
+  font-size: 3em;
+  text-transform: uppercase;
+  display: block;
 }
 
 .playerItem.activePlayer {
@@ -115,4 +160,9 @@ h2 {
   background-position: center;
   transition: all 0.5s ease;
   z-index: 3;
+}
+
+.block {
+  height: 20px;
+  background-color: #034694;
 }

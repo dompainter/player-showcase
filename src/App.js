@@ -20,7 +20,7 @@ class App extends Component {
     const updatedPlayers = this.state.players.map(p => {
       if (p.active) {
         p.active = false
-      } else if (p.heading === name) {
+      } else if (p.firstName === name) {
         p.active = true
       }
       return p
@@ -39,14 +39,12 @@ class App extends Component {
   render() {
     return (
       <Fragment>
-        <div className="playerTitle">
-          Chelsea Players 2019
-        </div>
+        <div className="block" />
         <div className="playerContainer">
           {this.state.players.map((player, i) => {
             const playerIndex = i + 1
             return (
-              <Item key={i} player={player} handleClick={() => this.handleClick(playerIndex, player.heading)} />
+              <Item key={i} player={player} handleClick={() => this.handleClick(playerIndex, player.firstName)} />
             )
           })}
           <div className="playerBackgrounds">
@@ -70,6 +68,7 @@ class App extends Component {
               />
           </div>
         </div>
+        <div className="block" />
       </Fragment>
     )
   }
