@@ -34,21 +34,24 @@ body {
   border-image: initial;
 }
 
-.playersBackgroundImage {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  display: none;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
+
+@keyframes fadeIn {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .playerBackgroundImage.activeBackground {
   z-index: 2;
   display: block;
+  height: 100%;
+  background-size: cover;
+  animation: fadeIn ease-in 1;
+  animation-duration: 1s;
+  opacity: 1;
 }
 
 .playerBackgroundImage.previousBackground {
@@ -90,7 +93,7 @@ h2 {
 }
 
 .playerItem.activePlayer {
-  flex:  2;
+  flex: 2;
 }
 
 .playerDetails {
@@ -111,4 +114,5 @@ h2 {
   flex: 1;
   background-position: center;
   transition: all 0.5s ease;
+  z-index: 3;
 }
